@@ -17,8 +17,9 @@ Build it first
 
 ```
 mvn clean install
-docker build -t test-image .
-docker run -P test-image
+docker build -t undertow-playground .
+# docker run -P undertow-playground -p 8080:8080
+docker run -d -p 8080:8080 -t undertow-playground
 ```
 
 To find the port
@@ -32,4 +33,9 @@ To kill docker
 docker ps
 docker kill <image_id>
 docker rm <image_id>
+```
+
+To login
+```
+docker exec -it <image_id> bash
 ```

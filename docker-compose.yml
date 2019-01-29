@@ -1,0 +1,9 @@
+version: '3'
+
+services:
+  undertow-playground:
+    build:
+      context: .
+    image: undertow-playground
+    ports:
+      - 8080:8080
