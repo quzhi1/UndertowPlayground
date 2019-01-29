@@ -43,10 +43,17 @@
       <artifactId>okhttp</artifactId>
       <version>3.12.1</version>
     </dependency>
+
+    <!-- apache httpclient -->
+    <!--<dependency>-->
+      <!--<groupId>org.apache.httpcomponents</groupId>-->
+      <!--<artifactId>httpclient</artifactId>-->
+      <!--<version>4.5.7</version>-->
+    <!--</dependency>-->
   </dependencies>
 
   <build>
-    <sourceDirectory>src</sourceDirectory>
+    <sourceDirectory>src/main/java</sourceDirectory>
     <plugins>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>

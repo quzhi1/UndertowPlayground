@@ -3,7 +3,6 @@ package com.quzhi1.undertowplayground.handler;
 import com.google.common.io.CharStreams;
 import io.undertow.server.HttpHandler;
 import io.undertow.server.HttpServerExchange;
-import io.undertow.util.HeaderValues;
 import io.undertow.util.Headers;
 import java.io.InputStreamReader;
 import java.io.Reader;
@@ -28,6 +27,7 @@ public class PostProxyHandler implements HttpHandler {
   }
 
   @Override
+  @SuppressWarnings("UnstableApiUsage")
   public void handleRequest(final HttpServerExchange exchange) {
     try (final Reader reader = new InputStreamReader(exchange.getInputStream())) {
       // Read post body and url
