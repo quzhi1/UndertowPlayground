@@ -43,13 +43,6 @@
       <artifactId>okhttp</artifactId>
       <version>3.12.1</version>
     </dependency>
-
-    <!-- apache httpclient -->
-    <!--<dependency>-->
-      <!--<groupId>org.apache.httpcomponents</groupId>-->
-      <!--<artifactId>httpclient</artifactId>-->
-      <!--<version>4.5.7</version>-->
-    <!--</dependency>-->
   </dependencies>
 
   <build>
@@ -78,6 +71,29 @@
         </executions>
         <configuration>
           <mainClass>com.quzhi1.undertowplayground.Main</mainClass>
+        </configuration>
+      </plugin>
+      <!-- Build an executable JAR with deps -->
+      <plugin>
+        <artifactId>maven-assembly-plugin</artifactId>
+        <executions>
+          <execution>
+            <phase>package</phase>
+            <goals>
+              <goal>single</goal>
+            </goals>
+          </execution>
+        </executions>
+        <configuration>
+          <archive>
+            <manifest>
+              <addClasspath>true</addClasspath>
+              <mainClass>com.quzhi1.undertowplayground.Main</mainClass>
+            </manifest>
+          </archive>
+          <descriptorRefs>
+            <descriptorRef>jar-with-dependencies</descriptorRef>
+          </descriptorRefs>
         </configuration>
       </plugin>
     </plugins>

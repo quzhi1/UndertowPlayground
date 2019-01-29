@@ -10,6 +10,7 @@ import io.undertow.server.handlers.BlockingHandler;
 import io.undertow.server.handlers.error.SimpleErrorPageHandler;
 import io.undertow.server.handlers.proxy.LoadBalancingProxyClient;
 import io.undertow.server.handlers.proxy.ProxyHandler;
+import java.net.InetAddress;
 import java.net.URI;
 
 public class Main {
@@ -27,8 +28,10 @@ public class Main {
 //      ProxyHandler proxyHandler = new ProxyHandler(loadBalancer, 0, new SimpleErrorPageHandler());
 
       // Start server
+//      String host = InetAddress.getLocalHost().getHostAddress();
+      String host = "localhost";
       Undertow server = Undertow.builder()
-          .addHttpListener(8080, "localhost")
+          .addHttpListener(8080, host)
           .setHandler(Handlers.path()
               .addPrefixPath("/", Handlers.routing()
                   .get("hello", new HelloworldHandler())
@@ -38,6 +41,7 @@ public class Main {
 //                  .post("proxy/post", proxyHandler)
               )
           ).build();
+      System.out.println("Starting server: " + host + ":8080");
       server.start();
     } catch (Exception e) {
       throw new RuntimeException(e);
