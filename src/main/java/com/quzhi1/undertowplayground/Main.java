@@ -19,29 +19,18 @@ public class Main {
 
   public static void main(final String[] args) {
     try {
-      // Create load balancer
-//      LoadBalancingProxyClient loadBalancer = new LoadBalancingProxyClient()
-//          .addHost(new URI(HOST))
-////          .addHost(new URI(HOST), null,
-////              new UndertowXnioSsl(Xnio.getInstance(), OptionMap.EMPTY, sslContext))
-//          .setConnectionsPerThread(20);
-//      ProxyHandler proxyHandler = new ProxyHandler(loadBalancer, 0, new SimpleErrorPageHandler());
-
       // Start server
-//      String host = InetAddress.getLocalHost().getHostAddress();
-      String host = "localhost";
       Undertow server = Undertow.builder()
-          .addHttpListener(8080, host)
+          .addHttpListener(8080, InetAddress.getLocalHost().getHostAddress())
           .setHandler(Handlers.path()
               .addPrefixPath("/", Handlers.routing()
                   .get("hello", new HelloworldHandler())
                   .post("echo", new BlockingHandler(new PostEcho()))
                   .get("proxy/get", new GetProxyHandler())
                   .post("proxy/post/reinvent", new BlockingHandler(new PostProxyHandler()))
-//                  .post("proxy/post", proxyHandler)
               )
           ).build();
-      System.out.println("Starting server: " + host + ":8080");
+      System.out.println("Starting server: " + InetAddress.getLocalHost().getHostAddress() + ":8080");
       server.start();
     } catch (Exception e) {
       throw new RuntimeException(e);

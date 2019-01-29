@@ -1,15 +1,5 @@
 # UndertowPlayground
-This is a playground for undertwo server
-
-## Run locally
-
-Build it first
-
-```mvn clean install```
-
-To start the server
-
-```mvn exec:java```
+This is a playground for undertow server
 
 ## Run docker
 
@@ -18,14 +8,7 @@ Build it first
 ```
 mvn clean install
 docker build -t undertow-playground .
-# docker run -P undertow-playground -p 8080:8080
 docker run -d -p 8080:8080 -t undertow-playground
-```
-
-To find the port
-```
-docker ps
-docker port <image_id>
 ```
 
 To kill docker 
